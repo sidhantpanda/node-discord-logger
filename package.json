@@ -4,12 +4,12 @@
   "description": "Nodejs logger for Discord",
   "main": "dist/index.js",
   "scripts": {
-    "clean": "rm -rf dist",
+    "lint": "eslint src/index.ts ",
+    "fix-lint": "eslint --fix src/index.ts ",
     "build-ts": "tsc --declaration",
-    "prebuild": "npm run clean",
+    "prebuild": "rm -rf dist",
     "docs": "typedoc --mode file --excludeNotExported --hideGenerator --exclude \"src/test.ts\" --out docs src",
-    "build": "npm run tslint && npm run build-ts",
-    "tslint": "tslint -c tslint.json -p tsconfig.json"
+    "build": "npm run lint && npm run build-ts"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,9 @@
     "discord",
     "nodejs"
   ],
+  "files": [
+    "dist/**"
+  ],
   "author": "Sidhant Panda",
   "license": "ISC",
   "bugs": {
@@ -29,8 +32,12 @@
   "homepage": "https://github.com/sidhantpanda/node-discord-logger#readme",
   "devDependencies": {
     "@types/superagent": "4.1.7",
+    "@typescript-eslint/eslint-plugin": "3.0.0",
+    "@typescript-eslint/parser": "3.0.0",
     "dotenv": "8.2.0",
-    "tslint": "6.1.2",
+    "eslint": "7.1.0",
+    "eslint-config-airbnb-base": "14.1.0",
+    "eslint-plugin-import": "2.20.2",
     "typedoc": "0.17.7",
     "typescript": "3.8.3"
   },
