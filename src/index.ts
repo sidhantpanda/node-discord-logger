@@ -7,7 +7,7 @@ const COLORS: { [key: string]: number } = {
   info: 2196944, // #2185d0
   verbose: 6559689, // #6435c9
   debug: 47694, // #00ba4e
-  silly: 2210373, // #21ba45
+  silly: 16073437, // #f542dd
 };
 
 type ALL_LOG_LEVELS = 'error' | 'warn' | 'info' | 'verbose' | 'debug' | 'silly';
