@@ -8,7 +8,7 @@ npm i -S node-discord-logger
 
 ### Initialization
 ```javascript
-import NodeDiscordLogger from 'node-discord-logger';
+import DiscordLogger from 'node-discord-logger';
 
 const logger = new  DiscordLogger({
   hook: 'https://your/discord/webhook',
