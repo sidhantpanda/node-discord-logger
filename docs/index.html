@@ -1,0 +1,176 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>node-discord-logger</title>
+	<meta name="description" content="Documentation for node-discord-logger">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">node-discord-logger</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>node-discord-logger</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#node-discord-logger" id="node-discord-logger" style="color: inherit; text-decoration: none;">
+					<h1>Node Discord Logger</h1>
+				</a>
+				<p>Send logs to Discord from your NodeJS application.</p>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h3>Installation</h3>
+				</a>
+				<pre><code>npm i -S <span class="hljs-keyword">node</span><span class="hljs-title">-discord-logger</span></code></pre>
+				<a href="#initialization" id="initialization" style="color: inherit; text-decoration: none;">
+					<h3>Initialization</h3>
+				</a>
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> DiscordLogger <span class="hljs-keyword">from</span> <span class="hljs-string">'node-discord-logger'</span>;
+
+<span class="hljs-keyword">const</span> logger = <span class="hljs-keyword">new</span>  DiscordLogger({
+  <span class="hljs-attr">hook</span>: <span class="hljs-string">'https://your/discord/webhook'</span>,
+  <span class="hljs-attr">icon</span>: <span class="hljs-string">'https://icon/for/service'</span>, <span class="hljs-comment">// optional, will be included as an icon in the footer</span>
+  <span class="hljs-attr">serviceName</span>: <span class="hljs-string">'My NodeJS Service'</span>, <span class="hljs-comment">// optional, will be included as text in the footer</span>
+  <span class="hljs-attr">defaultMeta</span>: {                    <span class="hljs-comment">// optional, will be added to all the messages</span>
+    <span class="hljs-string">'Process ID'</span>: process.pid,
+    <span class="hljs-attr">Host</span>: os.hostname(),            <span class="hljs-comment">// import os from 'os';</span>
+  },
+  <span class="hljs-attr">errorHandler</span>: <span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {            <span class="hljs-comment">// optional, if you don't want this library to log to console</span>
+    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'error from discord'</span>, err);
+  }
+});</code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<ul>
+					<li><p>Error Message</p>
+						<pre><code class="language-javascript">logger.error({ <span class="hljs-attr">message</span>: <span class="hljs-string">'This is an error message'</span>, <span class="hljs-attr">error</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'sample error'</span>) });</code></pre>
+						<p><img src="https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/error-message.png" alt="error message example"></p>
+					</li>
+					<li><p>Warning Message</p>
+						<pre><code class="language-javascript">logger.warn({ <span class="hljs-attr">message</span>: <span class="hljs-string">'This is warning message'</span> });</code></pre>
+						<p><img src="https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/warning-message.png" alt="warning message example"></p>
+					</li>
+					<li><p>Debug Message</p>
+						<pre><code class="language-javascript">logger.debug({ <span class="hljs-attr">message</span>: <span class="hljs-string">'This is a debug message'</span>, <span class="hljs-attr">json</span>: { <span class="hljs-attr">debug</span>: <span class="hljs-string">'data'</span> } });</code></pre>
+						<p><img src="https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/debug-message.png" alt="debug message example"></p>
+					</li>
+					<li><p>Info Message</p>
+						<pre><code class="language-javascript">logger.info({ <span class="hljs-attr">message</span>: <span class="hljs-string">'This is an info message'</span> });</code></pre>
+						<p><img src="https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/info-message.png" alt="info message example"></p>
+					</li>
+					<li><p>Verbose Message</p>
+						<pre><code class="language-javascript">logger.verbose({ <span class="hljs-attr">message</span>: <span class="hljs-string">'This is a verbose message'</span> });</code></pre>
+						<p><img src="https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/verbose-message.png" alt="verbose message example"></p>
+					</li>
+					<li><p>Silly Message</p>
+						<pre><code class="language-javascript">logger.silly({ <span class="hljs-attr">message</span>: <span class="hljs-string">'This is a silly message'</span> });</code></pre>
+						<p><img src="https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/silly-message.png" alt="silly message example"></p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/discordlogger.html" class="tsd-kind-icon">Discord<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/discordloggeroptions.html" class="tsd-kind-icon">Discord<wbr>Logger<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/errorcallback.html" class="tsd-kind-icon">Error<wbr>Callback</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/logmessage.html" class="tsd-kind-icon">Log<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#log_levels" class="tsd-kind-icon">LOG_<wbr>LEVELS</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#colors" class="tsd-kind-icon">COLORS</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
