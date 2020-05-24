@@ -1,5 +1,5 @@
 # Node Discord Logger
-Send logs to Discord from your NodeJS application
+Send logs to Discord from your NodeJS application.
 
 ### Installation
 ```
@@ -12,13 +12,13 @@ import NodeDiscordLogger from 'node-discord-logger';
 
 const logger = new  DiscordLogger({
   hook: 'https://your/discord/webhook',
-  icon: 'https://icon/for/service', // optional
-  serviceName: 'My NodeJS Service', // optional
-  defaultMeta: {                    // optional
+  icon: 'https://icon/for/service', // optional, will be included as an icon in the footer
+  serviceName: 'My NodeJS Service', // optional, will be included as text in the footer
+  defaultMeta: {                    // optional, will be added to all the messages
     'Process ID': process.pid,
     Host: os.hostname(),            // import os from 'os';
   },
-  errorHandler: err => {            // optional
+  errorHandler: err => {            // optional, if you don't want this library to log to console
     console.error('error from discord', err);
   }
 });
