@@ -2,15 +2,21 @@ import request from 'superagent';
 
 /** Available colors for discord messages */
 const COLORS: { [key: string]: number } = {
-  error: 14362664, // #db2828
-  warn: 16497928, // #fbbd08
-  info: 2196944, // #2185d0
-  verbose: 6559689, // #6435c9
-  debug: 47694, // #00ba4e
-  silly: 16073437, // #f542dd
+  /** Decimal for #db2828*/
+  error: 14362664,
+  /** Decimal for #fbbd08*/
+  warn: 16497928,
+  /** Decimal for #2185d0*/
+  info: 2196944,
+  /** Decimal for #6435c9*/
+  verbose: 6559689,
+  /** Decimal for #00ba4e*/
+  debug: 47694,
+  /** Decimal for #f542dd*/
+  silly: 16073437,
 };
 
-type ALL_LOG_LEVELS = 'error' | 'warn' | 'info' | 'verbose' | 'debug' | 'silly';
+type LOG_LEVELS = 'error' | 'warn' | 'info' | 'verbose' | 'debug' | 'silly';
 
 interface ErrorCallback {
   (err: Error): void;
@@ -107,7 +113,7 @@ export default class DiscordLogger {
    * @param data Log message data
    */
   public log = async (
-    level: ALL_LOG_LEVELS,
+    level: LOG_LEVELS,
     data: LogMessage
   ) => {
     try {
