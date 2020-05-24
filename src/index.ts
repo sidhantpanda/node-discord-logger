@@ -2,18 +2,23 @@ import request from 'superagent';
 
 /** Available colors for discord messages */
 const COLORS: { [key: string]: number } = {
-  /** Decimal for #db2828*/
+  /** Decimal for #db2828 */
   error: 14362664,
-  /** Decimal for #fbbd08*/
+
+  /** Decimal for #fbbd08 */
   warn: 16497928,
-  /** Decimal for #2185d0*/
+
+  /** Decimal for #2185d0 */
   info: 2196944,
-  /** Decimal for #6435c9*/
+
+  /** Decimal for #6435c9 */
   verbose: 6559689,
-  /** Decimal for #00ba4e*/
+
+  /** Decimal for #00ba4e */
   debug: 47694,
-  /** Decimal for #f542dd*/
-  silly: 16073437,
+
+  /** Decimal for #f542dd */
+  silly: 16073437
 };
 
 type LOG_LEVELS = 'error' | 'warn' | 'info' | 'verbose' | 'debug' | 'silly';
@@ -49,16 +54,22 @@ interface DiscordLoggerOptions {
 export default class DiscordLogger {
   /** Discord webhook */
   private hook: string;
+
   /** Default meta to be sent with every message */
   private defaultMeta: { [key: string]: string | number | Date };
+
   /** Service icon url */
   private icon: string | undefined = undefined;
+
   /** Service name */
   private serviceName: string | undefined = undefined;
+
   /** Discord webhook id */
   private id: string | undefined = undefined;
+
   /** Discord webhook token */
   private token: string | undefined = undefined;
+
   /** Error callback provided to prevent console logging here */
   private onErrorCallback: ErrorCallback | undefined = undefined;
 
@@ -79,7 +90,7 @@ export default class DiscordLogger {
     if (this.onErrorCallback) {
       this.onErrorCallback(err);
     } else {
-      console.error(err);
+      console.error(err); // eslint-disable-line
     }
   }
 
@@ -184,26 +195,31 @@ export default class DiscordLogger {
    * @param data Log message data
    */
   public error = async (data: LogMessage) => this.log('error', data);
+
   /**
    * Send a warning log message to discord
    * @param data Log message data
    */
   public warn = async (data: LogMessage) => this.log('warn', data);
+
   /**
    * Send an info log message to discord
    * @param data Log message data
    */
   public info = async (data: LogMessage) => this.log('info', data);
+
   /**
    * Send a verbose log message to discord
    * @param data Log message data
    */
   public verbose = async (data: LogMessage) => this.log('verbose', data);
+
   /**
    * Send a debug log message to discord
    * @param data Log message data
    */
   public debug = async (data: LogMessage) => this.log('debug', data);
+
   /**
    * Send a silly log message to discord
    * @param data Log message data
