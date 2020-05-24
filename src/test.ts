@@ -1,6 +1,7 @@
-require('dotenv').config();
-import DiscordLogger from './index';
-import os from 'os';
+
+require('dotenv').config(); /* eslint-disable-line */
+import DiscordLogger from './index'; /* eslint-disable-line */
+import os from 'os'; /* eslint-disable-line */
 
 const logger = new DiscordLogger({
   hook: process.env.HOOK,
@@ -8,10 +9,10 @@ const logger = new DiscordLogger({
   serviceName: process.env.SERVICE_NAME,
   defaultMeta: {
     'Process ID': process.pid,
-    Host: os.hostname(),
+    Host: os.hostname()
   },
   errorHandler: err => {
-    console.error('error from discord', err);
+    console.error('error from discord', err); /* eslint-disable-line */
   }
 });
 
@@ -22,6 +23,6 @@ const sendMessages = async () => {
   await logger.info({ message: 'This is an info message' });
   await logger.verbose({ message: 'This is a verbose message' });
   await logger.silly({ message: 'This is a silly message' });
-}
+};
 
 sendMessages();
