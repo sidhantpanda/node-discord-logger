@@ -7,7 +7,7 @@
     "clean": "rm -rf dist",
     "build-ts": "tsc --declaration",
     "prebuild": "npm run clean",
-    "docs": "typedoc --mode file --excludeNotExported --out docs src",
+    "docs": "typedoc --mode file --excludeNotExported --hideGenerator --exclude \"src/test.ts\" --out docs src",
     "build": "npm run tslint && npm run build-ts",
     "tslint": "tslint -c tslint.json -p tsconfig.json"
   },
