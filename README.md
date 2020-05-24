@@ -1,5 +1,6 @@
 # Node Discord Logger
 Send logs to Discord from your NodeJS application.
+[See detailed documentation](https://sidhantpanda.github.io/node-discord-logger/)
 
 ### Installation
 ```
