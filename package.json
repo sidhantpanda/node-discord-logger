@@ -1,0 +1,38 @@
+{
+  "name": "node-discord-logger",
+  "version": "1.0.0",
+  "description": "Nodejs logger for Discord",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build-ts": "tsc --declaration",
+    "prebuild": "npm run clean",
+    "build": "npm run tslint && npm run build-ts",
+    "tslint": "tslint -c tslint.json -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sidhantpanda/node-discord-logger.git"
+  },
+  "keywords": [
+    "logger",
+    "typescript",
+    "discord",
+    "nodejs"
+  ],
+  "author": "Sidhant Panda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sidhantpanda/node-discord-logger/issues"
+  },
+  "homepage": "https://github.com/sidhantpanda/node-discord-logger#readme",
+  "devDependencies": {
+    "@types/superagent": "4.1.7",
+    "dotenv": "8.2.0",
+    "tslint": "6.1.2",
+    "typescript": "3.8.3"
+  },
+  "dependencies": {
+    "superagent": "5.2.2"
+  }
+}
