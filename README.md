@@ -1,0 +1,63 @@
+# Node Discord Logger
+Send logs to Discord from your NodeJS application
+
+### Installation
+```
+npm i -S node-discord-logger
+```
+
+### Initialization
+```javascript
+import NodeDiscordLogger from 'node-discord-logger';
+
+const logger = new  DiscordLogger({
+  hook: 'https://your/discord/webhook',
+  icon: 'https://icon/for/service', // optional
+  serviceName: 'My NodeJS Service', // optional
+  defaultMeta: {                    // optional
+    'Process ID': process.pid,
+    Host: os.hostname(),            // import os from 'os';
+  },
+  errorHandler: err => {            // optional
+    console.error('error from discord', err);
+  }
+});
+```
+
+## Usage
+
+* Error Message
+```javascript
+logger.error({ message: 'This is an error message', error: new Error('sample error') });
+```
+![error message example](https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/error-message.png)
+
+* Warning Message
+```javascript
+logger.warn({ message: 'This is warning message' });
+```
+![warning message example](https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/warning-message.png)
+
+* Debug Message
+```javascript
+logger.debug({ message: 'This is a debug message', json: { debug: 'data' } });
+```
+![debug message example](https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/debug-message.png)
+
+* Info Message
+```javascript
+logger.info({ message: 'This is an info message' });
+```
+![info message example](https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/info-message.png)
+
+* Verbose Message
+```javascript
+logger.verbose({ message: 'This is a verbose message' });
+```
+![verbose message example](https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/verbose-message.png)
+
+* Silly Message
+```javascript
+logger.silly({ message: 'This is a silly message' });
+```
+![silly message example](https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/silly-message.png)
