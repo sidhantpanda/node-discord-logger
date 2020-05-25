@@ -29,7 +29,10 @@ const logger = new  DiscordLogger({
 
 * Error Message
 ```javascript
-logger.error({ message: 'This is an error message', error: new Error('sample error') });
+logger.error({
+  message: 'This is an error message',
+  error: new Error('sample error') // This field can be included in other log functions as well
+});
 ```
 ![error message example](https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/error-message.png)
 
@@ -41,13 +44,19 @@ logger.warn({ message: 'This is warning message' });
 
 * Debug Message
 ```javascript
-logger.debug({ message: 'This is a debug message', json: { debug: 'data' } });
+logger.debug({
+  message: 'This is a debug message',
+  json: { debug: 'data' } // This field can be included in other log functions as well
+});
 ```
 ![debug message example](https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/debug-message.png)
 
-* Info Message
+* <a name="usage_example_info_message"></a>Info Message
 ```javascript
-logger.info({ message: 'This is an info message' });
+logger.info({
+  message: 'This is a info message',
+  description: 'Some additional description' // This field can be included in other log functions as well
+});
 ```
 ![info message example](https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/info-message.png)
 
@@ -62,3 +71,18 @@ logger.verbose({ message: 'This is a verbose message' });
 logger.silly({ message: 'This is a silly message' });
 ```
 ![silly message example](https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/silly-message.png)
+
+### LogMessage 
+| Field  | Type  | Description  | Required |
+|---|---|---|---|
+| message  | string  | Main log message   |  **yes**  |
+| description  |  string  | Log message description  | no  |
+| error  |  Error  | Error object to be logged with the message  | no  |
+| meta  |  `{ [key: string]: string | number | Date }`  | Meta details for log message  | no  |
+| json  |  `any` (Valid JSON object) | Additional JSON to be logged in discord message  | no  |
+---
+
+## Changelog
+
+### v1.1.0
+* Added `description` field in log message. [See usage](#usage_example_info_message).
