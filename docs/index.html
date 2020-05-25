@@ -65,7 +65,8 @@
 				<a href="#node-discord-logger" id="node-discord-logger" style="color: inherit; text-decoration: none;">
 					<h1>Node Discord Logger</h1>
 				</a>
-				<p>Send logs to Discord from your NodeJS application.</p>
+				<p>Send logs to Discord from your NodeJS application.
+				<a href="https://sidhantpanda.github.io/node-discord-logger/">See detailed documentation</a></p>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h3>Installation</h3>
 				</a>
@@ -92,7 +93,10 @@
 				</a>
 				<ul>
 					<li><p>Error Message</p>
-						<pre><code class="language-javascript">logger.error({ <span class="hljs-attr">message</span>: <span class="hljs-string">'This is an error message'</span>, <span class="hljs-attr">error</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'sample error'</span>) });</code></pre>
+						<pre><code class="language-javascript">logger.error({
+<span class="hljs-attr">message</span>: <span class="hljs-string">'This is an error message'</span>,
+<span class="hljs-attr">error</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'sample error'</span>) <span class="hljs-comment">// This field can be included in other log functions as well</span>
+});</code></pre>
 						<p><img src="https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/error-message.png" alt="error message example"></p>
 					</li>
 					<li><p>Warning Message</p>
@@ -100,11 +104,17 @@
 						<p><img src="https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/warning-message.png" alt="warning message example"></p>
 					</li>
 					<li><p>Debug Message</p>
-						<pre><code class="language-javascript">logger.debug({ <span class="hljs-attr">message</span>: <span class="hljs-string">'This is a debug message'</span>, <span class="hljs-attr">json</span>: { <span class="hljs-attr">debug</span>: <span class="hljs-string">'data'</span> } });</code></pre>
+						<pre><code class="language-javascript">logger.debug({
+<span class="hljs-attr">message</span>: <span class="hljs-string">'This is a debug message'</span>,
+<span class="hljs-attr">json</span>: { <span class="hljs-attr">debug</span>: <span class="hljs-string">'data'</span> } <span class="hljs-comment">// This field can be included in other log functions as well</span>
+});</code></pre>
 						<p><img src="https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/debug-message.png" alt="debug message example"></p>
 					</li>
-					<li><p>Info Message</p>
-						<pre><code class="language-javascript">logger.info({ <span class="hljs-attr">message</span>: <span class="hljs-string">'This is an info message'</span> });</code></pre>
+					<li><p><a name="usage_example_info_message"></a>Info Message</p>
+						<pre><code class="language-javascript">logger.info({
+<span class="hljs-attr">message</span>: <span class="hljs-string">'This is a info message'</span>,
+<span class="hljs-attr">description</span>: <span class="hljs-string">'Some additional description'</span> <span class="hljs-comment">// This field can be included in other log functions as well</span>
+});</code></pre>
 						<p><img src="https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/info-message.png" alt="info message example"></p>
 					</li>
 					<li><p>Verbose Message</p>
@@ -115,6 +125,59 @@
 						<pre><code class="language-javascript">logger.silly({ <span class="hljs-attr">message</span>: <span class="hljs-string">'This is a silly message'</span> });</code></pre>
 						<p><img src="https://raw.githubusercontent.com/sidhantpanda/public/master/img/projects/node-discord-logger/silly-message.png" alt="silly message example"></p>
 					</li>
+				</ul>
+				<a href="#logmessage" id="logmessage" style="color: inherit; text-decoration: none;">
+					<h3>LogMessage</h3>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Type</th>
+							<th>Description</th>
+							<th>Required</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>message</td>
+							<td>string</td>
+							<td>Main log message</td>
+							<td><strong>yes</strong></td>
+						</tr>
+						<tr>
+							<td>description</td>
+							<td>string</td>
+							<td>Log message description</td>
+							<td>no</td>
+						</tr>
+						<tr>
+							<td>error</td>
+							<td>Error</td>
+							<td>Error object to be logged with the message</td>
+							<td>no</td>
+						</tr>
+						<tr>
+							<td>meta</td>
+							<td>`{ [key: string]: string</td>
+							<td>number</td>
+							<td>Date }`</td>
+						</tr>
+						<tr>
+							<td>json</td>
+							<td><code>any</code> (Valid JSON object)</td>
+							<td>Additional JSON to be logged in discord message</td>
+							<td>no</td>
+						</tr>
+				</tbody></table>
+				<hr>
+				<a href="#changelog" id="changelog" style="color: inherit; text-decoration: none;">
+					<h2>Changelog</h2>
+				</a>
+				<a href="#v110" id="v110" style="color: inherit; text-decoration: none;">
+					<h3>v1.1.0</h3>
+				</a>
+				<ul>
+					<li>Added <code>description</code> field in log message. <a href="#usage_example_info_message">See usage</a>.</li>
 				</ul>
 			</div>
 		</div>

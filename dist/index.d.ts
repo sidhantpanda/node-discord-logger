@@ -2,6 +2,8 @@ declare type LOG_LEVELS = 'error' | 'warn' | 'info' | 'verbose' | 'debug' | 'sil
 interface LogMessage {
     /** Message content */
     message: string;
+    /** Message description */
+    description?: string;
     /** Error object if any */
     error?: Error;
     /** Additional JSON data for the message */

@@ -86,6 +86,7 @@ class DiscordLogger {
                     content: undefined,
                     embeds: [{
                             title: data.message,
+                            description: data.description,
                             color: COLORS[level],
                             fields: [],
                             timestamp: new Date().toISOString(),
