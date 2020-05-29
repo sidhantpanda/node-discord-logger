@@ -78,7 +78,7 @@ logger.silly({ message: 'This is a silly message' });
 | message  | string  | Main log message   |  **yes**  |
 | description  |  string  | Log message description  | no  |
 | error  |  Error  | Error object to be logged with the message  | no  |
-| meta  |  `{ [key: string]: string | number | Date }`  | Meta details for log message  | no  |
+| meta  |  `{ [key: string]: string \| number \| Date }`  | Meta details for log message  | no  |
 | json  |  `any` (Valid JSON object) | Additional JSON to be logged in discord message  | no  |
 ---
 
