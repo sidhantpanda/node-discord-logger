@@ -13,7 +13,7 @@ interface LogMessage {
         [key: string]: string | number | Date;
     };
 }
-interface DiscordLoggerOptions {
+export interface DiscordLoggerOptions {
     /** Discord Bot webhook */
     hook: string;
     /** An icon which will be displayed for all message in the footer */
