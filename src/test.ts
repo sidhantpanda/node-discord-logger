@@ -1,4 +1,3 @@
-
 require('dotenv').config(); /* eslint-disable-line */
 import DiscordLogger from './index'; /* eslint-disable-line */
 import os from 'os'; /* eslint-disable-line */
