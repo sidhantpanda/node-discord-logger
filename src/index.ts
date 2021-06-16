@@ -1,4 +1,5 @@
 import request from 'superagent';
+import { hexCodeToDecimal } from './utils';
 
 /** Available colors for discord messages */
 const COLORS: { [key: string]: number } = {
