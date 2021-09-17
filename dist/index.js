@@ -57,7 +57,9 @@ class DiscordLogger {
         this.getIdToken = () => __awaiter(this, void 0, void 0, function* () {
             if (!this.id || !this.token) {
                 try {
-                    const response = yield superagent_1.default.get(this.hook).set('accept', 'json');
+                    const response = yield superagent_1.default
+                        .get(this.hook)
+                        .set('accept', 'json');
                     this.id = response.body.id;
                     this.token = response.body.token;
                 }
@@ -83,10 +85,9 @@ class DiscordLogger {
             try {
                 // https://birdie0.github.io/discord-webhooks-guide/discord_webhook.html
                 const postBody = {
-                    username: this.defaultUsername || data.username,
+                    username: data.username || this.defaultUsername,
                     content: undefined,
-                    embeds: [
-                        {
+                    embeds: [{
                             title: data.message,
                             description: data.description,
                             color: COLORS[level],
@@ -96,8 +97,7 @@ class DiscordLogger {
                                 text: this.serviceName,
                                 icon_url: this.icon
                             }
-                        }
-                    ]
+                        }]
                 };
                 const contentStrings = [];
                 if (data.json) {
@@ -130,7 +130,10 @@ class DiscordLogger {
                     url: yield this.getUrl(),
                     body: postBody
                 };
-                yield superagent_1.default.post(options.url).send(options.body).set('accept', 'json');
+                yield superagent_1.default
+                    .post(options.url)
+                    .send(options.body)
+                    .set('accept', 'json');
             }
             catch (err) {
                 this.logInternalError(err);

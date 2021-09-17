@@ -141,7 +141,7 @@ export default class DiscordLogger {
     try {
       // https://birdie0.github.io/discord-webhooks-guide/discord_webhook.html
       const postBody = {
-        username: this.defaultUsername || data.username,
+        username: data.username || this.defaultUsername,
         content: undefined as string | undefined,
         embeds: [{
           title: data.message,
