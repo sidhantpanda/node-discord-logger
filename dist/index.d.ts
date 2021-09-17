@@ -4,6 +4,8 @@ interface LogMessage {
     message: string;
     /** Message description */
     description?: string;
+    /** Username for the bot */
+    username?: string;
     /** Error object if any */
     error?: Error;
     /** Additional JSON data for the message */
@@ -20,6 +22,8 @@ export interface DiscordLoggerOptions {
     icon?: string;
     /** Service name which will be printed in the footer */
     serviceName?: string;
+    /** Default username for the bot */
+    defaultUsername?: string;
     /** Default meta to be sent with every request */
     defaultMeta?: {
         [key: string]: string | number | Date;
@@ -38,6 +42,8 @@ export default class DiscordLogger {
     private icon;
     /** Service name */
     private serviceName;
+    /** Default username */
+    private defaultUsername;
     /** Discord webhook id */
     private id;
     /** Discord webhook token */
