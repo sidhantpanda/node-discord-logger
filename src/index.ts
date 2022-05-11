@@ -33,6 +33,8 @@ interface LogMessage {
   message: string;
   /** Message description */
   description?: string;
+  /** Username for the bot */
+  username?: string;
   /** Error object if any */
   error?: Error;
   /** Additional JSON data for the message */
@@ -48,6 +50,8 @@ export interface DiscordLoggerOptions {
   icon?: string;
   /** Service name which will be printed in the footer */
   serviceName?: string;
+  /** Default username for the bot */
+  defaultUsername?: string;
   /** Default meta to be sent with every request */
   defaultMeta?: { [key: string]: string | number | Date };
   /** Error callback to be called instead of logging errors to console */
@@ -67,6 +71,9 @@ export default class DiscordLogger {
   /** Service name */
   private serviceName: string | undefined = undefined;
 
+  /** Default username */
+  private defaultUsername: string | undefined = undefined;
+
   /** Discord webhook id */
   private id: string | undefined = undefined;
 
@@ -83,6 +90,7 @@ export default class DiscordLogger {
   constructor(options: DiscordLoggerOptions) {
     this.hook = options.hook;
     this.icon = options.icon;
+    this.defaultUsername = options.defaultUsername;
     this.serviceName = options.serviceName;
     this.defaultMeta = options.defaultMeta;
     this.onErrorCallback = options.errorHandler;
@@ -95,7 +103,7 @@ export default class DiscordLogger {
     } else {
       console.error(err); // eslint-disable-line
     }
-  }
+  };
 
   private getIdToken = async (): Promise<{ id: string; token: string }> => {
     if (!this.id || !this.token) {
@@ -119,7 +127,7 @@ export default class DiscordLogger {
   private getUrl = async () => {
     const { id, token } = await this.getIdToken();
     return `https://discordapp.com/api/v6/webhooks/${id}/${token}`;
-  }
+  };
 
   /**
    * Send a log message to discord
@@ -133,6 +141,7 @@ export default class DiscordLogger {
     try {
       // https://birdie0.github.io/discord-webhooks-guide/discord_webhook.html
       const postBody = {
+        username: data.username || this.defaultUsername,
         content: undefined as string | undefined,
         embeds: [{
           title: data.message,

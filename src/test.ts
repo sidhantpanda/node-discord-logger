@@ -6,6 +6,7 @@ const logger = new DiscordLogger({
   hook: process.env.HOOK,
   icon: process.env.ICON_URL,
   serviceName: process.env.SERVICE_NAME,
+  defaultUsername: process.env.USERNAME,
   defaultMeta: {
     'Process ID': process.pid,
     Host: os.hostname()

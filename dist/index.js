@@ -38,6 +38,8 @@ class DiscordLogger {
         this.icon = undefined;
         /** Service name */
         this.serviceName = undefined;
+        /** Default username */
+        this.defaultUsername = undefined;
         /** Discord webhook id */
         this.id = undefined;
         /** Discord webhook token */
@@ -83,6 +85,7 @@ class DiscordLogger {
             try {
                 // https://birdie0.github.io/discord-webhooks-guide/discord_webhook.html
                 const postBody = {
+                    username: data.username || this.defaultUsername,
                     content: undefined,
                     embeds: [{
                             title: data.message,
@@ -168,6 +171,7 @@ class DiscordLogger {
         this.silly = (data) => __awaiter(this, void 0, void 0, function* () { return this.log('silly', data); });
         this.hook = options.hook;
         this.icon = options.icon;
+        this.defaultUsername = options.defaultUsername;
         this.serviceName = options.serviceName;
         this.defaultMeta = options.defaultMeta;
         this.onErrorCallback = options.errorHandler;
