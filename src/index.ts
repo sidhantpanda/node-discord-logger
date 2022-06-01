@@ -95,7 +95,7 @@ export default class DiscordLogger {
     } else {
       console.error(err); // eslint-disable-line
     }
-  }
+  };
 
   private getIdToken = async (): Promise<{ id: string; token: string }> => {
     if (!this.id || !this.token) {
@@ -119,7 +119,7 @@ export default class DiscordLogger {
   private getUrl = async () => {
     const { id, token } = await this.getIdToken();
     return `https://discordapp.com/api/v6/webhooks/${id}/${token}`;
-  }
+  };
 
   /**
    * Send a log message to discord
