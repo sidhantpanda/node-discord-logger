@@ -31,18 +31,18 @@
   },
   "homepage": "https://github.com/sidhantpanda/node-discord-logger#readme",
   "devDependencies": {
-    "@types/superagent": "4.1.11",
-    "@typescript-eslint/eslint-plugin": "4.27.0",
-    "@typescript-eslint/parser": "4.27.0",
-    "debug": "4.3.1",
-    "dotenv": "10.0.0",
-    "eslint": "7.28.0",
-    "eslint-config-airbnb-base": "14.2.1",
-    "eslint-plugin-import": "2.23.4",
-    "typedoc": "0.20.36",
-    "typescript": "4.3.2"
+    "@types/superagent": "4.1.15",
+    "@typescript-eslint/eslint-plugin": "5.27.0",
+    "@typescript-eslint/parser": "5.27.0",
+    "debug": "4.3.4",
+    "dotenv": "16.0.1",
+    "eslint": "8.16.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-plugin-import": "2.26.0",
+    "typedoc": "0.22.17",
+    "typescript": "4.7.2"
   },
   "dependencies": {
-    "superagent": "6.1.0"
+    "superagent": "7.1.6"
   }
 }
